@@ -1,4 +1,4 @@
-Tools I liked
+Tools I liked, I finally caved and listened to @drisspg who kept asking me to improve my setup 👴
 
 ### Must have
 * ripgrep (rg): ripgrep pattern directory
