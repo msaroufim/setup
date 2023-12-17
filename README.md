@@ -6,6 +6,7 @@ Tools I liked
 * oh my zsh: looks pretty
 * autojump (j): fuzzy jump
 * gh: github cli
+* sshx: collaborative programming but more reliable and prettier than tmate
 
 ### Nice to have
 * bat (cat): like cat but pretty
