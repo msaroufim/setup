@@ -74,6 +74,12 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+# Download Znap, if it's not there yet.
+[[ -r ~/Repos/znap/znap.zsh ]] ||
+    git clone --depth 1 -- \
+        https://github.com/marlonrichert/zsh-snap.git ~/Repos/znap
+source ~/Repos/znap/znap.zsh  # Start Znap
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -104,9 +110,63 @@ alias f="fzf"
 alias info="neofetch"
 
 # Set infinite history size
-HISTSIZE=-1
-SAVEHIST=-1
+# HISTSIZE=-1
+# SAVEHIST=-1
 
 eval $(thefuck --alias)
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+. "$HOME/.cargo/env"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/marksaroufim/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/marksaroufim/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/marksaroufim/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/marksaroufim/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+eval "$(rbenv init - zsh)"
+
+alias yolo="git add . && git commit -m 'update' && git push"
+
+# Add some git aliases
+alias gs="git status"
+alias gd="git diff"
+alias gc="git commit -m"
+alias gco="git checkout"
+alias gp="git push"
+
+
+[[ -r ~/Repos/znap/znap.zsh ]] ||
+    git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git ~/Repos/znap
+source ~/Repos/znap/znap.zsh
+
+# `znap prompt` makes your prompt visible in just 15-40ms!
+znap prompt sindresorhus/pure
+
+# `znap source` starts plugins.
+znap source marlonrichert/zsh-autocomplete
+
+# `znap eval` makes evaluating generated command output up to 10 times faster.
+znap eval iterm2 'curl -fsSL https://iterm2.com/shell_integration/zsh'
+
+# `znap function` lets you lazy-load features you don't always need.
+znap function _pyenv pyenv "znap eval pyenv 'pyenv init - --no-rehash'"
+compctl -K    _pyenv pyenv
+
+# `znap install` adds new commands and completions.
+znap install aureliojargas/clitest zsh-users/zsh-completions
