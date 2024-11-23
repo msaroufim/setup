@@ -142,6 +142,7 @@ if [ -f '/Users/marksaroufim/Downloads/google-cloud-sdk/completion.zsh.inc' ]; t
 eval "$(rbenv init - zsh)"
 
 alias yolo="git add . && git commit -m 'update' && git push"
+alias c="clear"
 
 # Add some git aliases
 alias gs="git status"
