@@ -1,7 +1,7 @@
 #!/bin/bash
 # Install ripgrep (rg)
 sudo apt-get update
-sudo apt-get install -y rg
+sudo apt-get install -y ripgrep
 # Install fzf (f)
 git clone https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
