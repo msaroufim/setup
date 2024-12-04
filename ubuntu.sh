@@ -22,3 +22,4 @@ sudo apt-get install -y duf
 sudo apt-get install -y exa
 # Install neofetch (info)
 sudo apt-get install -y neofetch
+apt install fd-find
