@@ -17,3 +17,4 @@ brew install duf
 brew install exa
 # Install neofetch (info)
 brew install neofetch
+brew install fd
